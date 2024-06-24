@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Cabecalho from "./components/Cabecalho"
 import EstilosGlobais from "./components/EstilosGlobais"
 import Rodape from "./components/Rodape"
+import Banner from "./components/Banner"
 
 const AppContainer = styled.div`
   width:1440px;
@@ -15,7 +16,7 @@ function App() {
     <>
       <EstilosGlobais />
         <Cabecalho/>
-
+        <Banner></Banner>
         <Rodape/>
 
 

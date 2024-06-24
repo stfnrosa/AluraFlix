@@ -8,6 +8,7 @@ const HeaderEstilizado = styled.header`
     display: flex;
     align-items: center;
     border-bottom: 4px solid var(--destaque);
+    box-shadow: 0px 5px 29px 0px rgba(34, 113, 209, 0.70);
     div{
         display: flex;
         justify-content: space-between;
