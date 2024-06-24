@@ -7,6 +7,7 @@ const HeaderEstilizado = styled.header`
     height: 125px;
     display: flex;
     align-items: center;
+    border-bottom: 4px solid var(--destaque);
     div{
         display: flex;
         justify-content: space-between;
@@ -27,7 +28,7 @@ const Cabecalho = () => {
     return (
         <HeaderEstilizado>
             <div>
-                <img src={logo} alt="logo AluraFlix" />
+                <img src={logo} alt="logo Aluraflix" />
                 <nav>
                     <Botao>HOME</Botao>
                     <Botao>NOVO VÍDEO</Botao>
