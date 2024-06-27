@@ -1,10 +1,13 @@
-import styles from "./Botao.module.css"
+import { Link } from 'react-router-dom'
+import styles from './Botao.module.css'
 
-const Botao = ({children}) => {
+function Botao({ url, children }) {
     return (
-    <button className={styles.botao}>
-        {children}
-    </button>
+        <Link to={url}>
+            <button className={styles.botao}>
+                {children}
+            </button>
+        </Link>
     )
 }
 

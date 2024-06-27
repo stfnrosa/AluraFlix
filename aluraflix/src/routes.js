@@ -1,18 +1,18 @@
-import { BrowserRouter, Route, Routes} from "react-router-dom"
-import PaginaBase from "./pages/PaginaBase"
-import Inicio from "./pages/Inicio"
-import NaoEncontrada from "./pages/NaoEncontrada"
-import NovoVideo from "./pages/NovoVideo"
+import NovoVideo from "pages/NovoVideo"
+import Inicio from "pages/Inicio"
+import NaoEncontrada from "pages/NaoEncontrada"
+
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 function AppRoutes() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<PaginaBase/>}>
+            <Routes>                            
                     <Route index element={<Inicio/>}></Route>
-                    <Route path="novo-video" element={<NovoVideo />}></Route>
+                    <Route path="novo-video" element={<NovoVideo/>}></Route>
                     <Route path="*" element={<NaoEncontrada />}></Route>
-                </Route>
+                  
+        
             </Routes>
         </BrowserRouter>
     )

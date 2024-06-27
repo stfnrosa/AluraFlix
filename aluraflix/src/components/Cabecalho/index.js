@@ -1,17 +1,25 @@
-import styles from "./Cabecalho.module.css"
-import logo from "./logo.png"
-import Botao from "../Botao"
+import { Link } from "react-router-dom"
+import logo from './logo.png'
+import styles from './Cabecalho.module.css'
+import Botao from "components/Botao"
 
 
-const Cabecalho = () => {
-    return (
+function Cabecalho (){
+    return(
         <header className={styles.cabecalho}>
             <div>
-                <img src={logo} alt="logo Aluraflix" />
+                <Link to="./">
+                    <img src={logo} alt="Logo do CineTag"></img>
+                </Link>
                 <nav>
-                    <Botao>HOME</Botao>
-                    <Botao>NOVO VÍDEO</Botao>
+                    <Botao url="./">
+                        HOME
+                    </Botao>
+                    <Botao url="./novo-video">
+                        NOVO VÍDEO
+                    </Botao>
                 </nav>
+
             </div>
         </header>
     )

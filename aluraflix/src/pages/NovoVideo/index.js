@@ -1,6 +1,13 @@
-const NovoVideo = () => {
-    return(
-        <h1>Novo Vídeo</h1>
+import styles from "./NovoVideo.module.css"
+
+
+function NovoVideo() {
+    
+    return (
+        <>
+            
+        </>
     )
 }
+
 export default NovoVideo
