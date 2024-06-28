@@ -24,8 +24,8 @@ const BannerContainer = styled.section`
         min-height: 50vh;
 }`
 const ContainerBanner = styled.div`
-  margin-left: 5%;
-  margin-right: 5%;
+  width:1440px;
+  margin: auto;
   height: 100%;
   display: flex;
   gap:50px;

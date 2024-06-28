@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const BotaoEstilizado = styled.button`
-height: 54px;
+   height: 54px;
+   font-family: var(--fonte-botao);
     width: 180px;
     border-radius: 10px;
     border: 4px solid #ffffff;
