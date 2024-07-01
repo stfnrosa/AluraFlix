@@ -1,4 +1,5 @@
-const { default: styled } = require("styled-components")
+import styled from "styled-components"
+
 
 const ContainerIframe = styled.div`
     position: relative;

@@ -1,12 +1,33 @@
 import { Link } from "react-router-dom"
 import logo from './logo.png'
-import styles from './Cabecalho.module.css'
 import Botao from "components/Botao"
+import styled from "styled-components"
 
+const HeaderEstilizado = styled.header`
+    background: #262626;
+    height: 125px;
+    display: flex;
+    border-bottom: 4px solid var(--destaque);
+    div {
+        align-items: center;
+        width:1440px;
+        display: flex;
+        justify-content: space-between;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    img {
+        max-width: 180px;
+    }
+    nav{
+        display:flex;
+        gap:25px;
+    }
+`
 
 function Cabecalho (){
     return(
-        <header className={styles.cabecalho}>
+        <HeaderEstilizado>
             <div>
                 <Link to="./">
                     <img src={logo} alt="Logo do CineTag"></img>
@@ -21,7 +42,7 @@ function Cabecalho (){
                 </nav>
 
             </div>
-        </header>
+        </HeaderEstilizado>
     )
 }
 
