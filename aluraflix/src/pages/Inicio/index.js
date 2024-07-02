@@ -17,13 +17,8 @@ function Inicio() {
             videoDescription={"Eu to aqui pra nesse vídeo dizer que a gente vai aprender a começar uma app inspirada no desenho Pokémon com Nextjs e React, ver algumas dicas sobre performance e de quebra conhecer uma plataforma sensacional pra fazer deploy que é a Vercel. Tudo em 22 minutos nesse vídeo feito com todo o carinho do mundo construindo uma Pokedex! "}
           />
 
-          <Carrosel videoCategoria={db.categorias[0]}/>
+          <Carrosel/>
 
-          <Carrosel videoCategoria={db.categorias[1]}/>
-
-          <Carrosel videoCategoria={db.categorias[2]}/>
-
-          <Carrosel videoCategoria={db.categorias[4]}/>
           <Rodape/>
         </main>
     
