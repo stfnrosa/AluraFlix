@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const VideoCardContainer = styled.a`
-    border: 2px solid;
+export const VideoCardContainer = styled.a`
+  border: 2px solid;
   border-radius: 4px;
   text-decoration: none;
   overflow: hidden;
@@ -29,7 +29,7 @@ const VideoCardContainer = styled.a`
   &:not(:first-child) {
     margin-left: 20px;
   }
-`
+`;
 
 function getYouTubeId(youtubeURL) {
   return youtubeURL
@@ -40,7 +40,7 @@ function getYouTubeId(youtubeURL) {
 }
 
 
-function Card({ videoTitle, videoURL, categoryColor }) {
+function VideoCard({ videoTitle, videoURL, categoryColor }) {
   const image = `https://img.youtube.com/vi/${getYouTubeId(videoURL)}/hqdefault.jpg`;
   return (
     <VideoCardContainer
@@ -53,4 +53,4 @@ function Card({ videoTitle, videoURL, categoryColor }) {
   );
 }
 
-export default Card;
+export default VideoCard;

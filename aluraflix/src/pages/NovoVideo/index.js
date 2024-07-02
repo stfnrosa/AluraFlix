@@ -1,12 +1,17 @@
-
+import React from 'react';
+import PageDefault from '../../components/PageDefault';
+import { Link } from 'react-router-dom';
 
 function NovoVideo() {
-    
     return (
-        <>
-            
-        </>
-    )
-}
+      <PageDefault>
+        <h1>Cadastro de Vídeo</h1>
 
-export default NovoVideo
+        <Link to="/cadastro/categoria">
+            Cadastrar Categoria
+        </Link>
+      </PageDefault>
+    )
+  }
+
+export default NovoVideo;

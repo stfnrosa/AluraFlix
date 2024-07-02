@@ -1,39 +1,12 @@
-import styled from "styled-components"
-import Iframe from "./Iframe";
-import Label from "components/Label";
+import React from 'react';
+import Iframe from './Iframe';
+import styled from 'styled-components';
 
-const BannerContainer = styled.div`
-   background-image:rgba(0, 0, 0, 0.9);
-`
-
-const ContainerImagem = styled.section` 
-    height: 80vh;
-    margin-bottom: 20px;
-    position: relative;
-    color: var(--branco);
-    background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
-    background-size: cover;
-    background-position: center;
-    &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 18, 51, 0.53); 
-  }
-    @media (max-width: 800px) {
-        height: auto;
-        min-height: 50vh;
-}`
-
-const ContainerDoBanner = styled.div`
-  width:1440px;
-  margin: auto;
+export const ContentAreaContainer = styled.section`
+  margin-left: 5%;
+  margin-right: 5%;
   height: 100%;
   display: flex;
-  gap:50px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -42,30 +15,116 @@ const ContainerDoBanner = styled.div`
     padding-top: 100px;
     flex-direction: column;
   }
-`
+`;
 
-const ContainerConteudo = styled.div`
-  width:50%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+ContentAreaContainer.Item = styled.div`
+  width: 50%;
+  display: inline-block;
+  margin-bottom: 50px;
   @media (max-width: 800px) {
     width: 100%;
   }
-`
+`;
 
-const Titulo = styled.h1`
-  font-size: 46px;
-  font-weight: 400;
-  margin:0;
+ContentAreaContainer.Category = styled.h1`
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 60px;
+  line-height: 70px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  display: inline-block; 
+  padding: 25px;
+  line-height: 1;
+  border-radius: 4px;
 
-`
+  @media (max-width: 800px) {
+    display: none;
+    font-size: 18px;
+    padding: 10px;
+  }
+`;
 
-const Paragrafo = styled.p`
-  font-size: 18px;
-  font-weight:300;
-  margin:0;
-`
+ContentAreaContainer.Description = styled.p`
+  @media (max-width: 800px) {
+    display: none;
+  }
+`;
+
+ContentAreaContainer.Title = styled.h2`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 32px;
+
+  @media (max-width: 800px) {
+    font-size: 32px;
+    text-align: center;
+  }
+`;
+
+export const BannerMainContainer = styled.section`
+  height: 80vh;
+  position: relative;
+  color: #fff;
+  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`}; 
+  background-size: cover;
+  background-position: center;
+  @media (max-width: 800px) {
+    height: auto;
+    min-height: 50vh;
+  }
+
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 20%;
+  }
+
+  &:before {
+    top: 0;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+
+  &:after {
+    bottom: 0;
+    background: linear-gradient(0deg, #141414 0%, transparent 100%);
+  }
+`;
+
+export const WatchButton = styled.button`
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 16px 24px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid transparent;
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--black);
+  transition: opacity .3s;
+  display: none;
+  margin: 0 auto;
+  @media (max-width: 800px) {
+    display: block;
+  }
+`;
 
 
 function getYouTubeId(youtubeURL) {
@@ -76,40 +135,36 @@ function getYouTubeId(youtubeURL) {
     );
 }
 
-function Banner({
-  videoCategoria,
+export default function Banner({
   videoTitle,
   videoDescription,
-  url,  
+  url,
 }) {
   const youTubeID = getYouTubeId(url);
   const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
-    <BannerContainer>
-      <ContainerImagem style={{ backgroundImage: `url(${bgUrl})` }}>
-        <ContainerDoBanner>
-          <ContainerConteudo>
-            <Label tamanho="grande" cor={videoCategoria.cor}>
-              {videoCategoria.titulo}
-            </Label>
-            <Titulo>
-              {videoTitle}
-            </Titulo>
-            <Paragrafo>
-              {videoDescription}
-            </Paragrafo>
-          </ContainerConteudo>
-          <ContainerConteudo>
-            <Iframe
-              youtubeID={youTubeID}
-            />
-          </ContainerConteudo>
-        </ContainerDoBanner>
-      </ContainerImagem>
-    </BannerContainer>
+    <BannerMainContainer backgroundImage={bgUrl}>
+      <ContentAreaContainer>
+        <ContentAreaContainer.Item>
+          <ContentAreaContainer.Title>
+            {videoTitle}
+          </ContentAreaContainer.Title>
 
+          <ContentAreaContainer.Description>
+            {videoDescription}
+          </ContentAreaContainer.Description>
+        </ContentAreaContainer.Item>
+
+        <ContentAreaContainer.Item>
+          <Iframe
+            youtubeID={youTubeID}
+          />
+          <WatchButton>
+            Assistir
+          </WatchButton>
+        </ContentAreaContainer.Item>
+      </ContentAreaContainer>
+    </BannerMainContainer>
   );
 }
-
-export default Banner
