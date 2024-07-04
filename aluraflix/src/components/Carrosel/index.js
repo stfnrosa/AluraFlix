@@ -21,28 +21,12 @@ export const Title = styled.h3`
   }
 `;
 
-export const ExtraLink = styled.a`
-  margin-left: 16px;
-  text-decoration: none;
-  transition: opacity .3s;
-  &:hover,
-  &:focus {
-    opacity: .5;
-  }
-  @media (max-width: 800px) {
-    display: block;
-    margin-bottom: 16px;
-    margin-left: 0;
-  }
-`;
-
 export const VideoCardList = styled.ul`
-  margin: 0;
+
+  display: flex;
   padding-left: 0;
   padding-bottom: 32px;
   list-style: none;
-  display: flex;
-  overflow-x: auto;
   flex-direction: row;
   
   li {
@@ -51,6 +35,9 @@ export const VideoCardList = styled.ul`
 `;
 
 export const VideoCardGroupContainer = styled.section`
+  width:1440px;
+  max-width: 100%;
+  margin: 0 auto;
   color: white;
   min-height: 197px;
   margin-left: 5%;
@@ -59,43 +46,47 @@ export const VideoCardGroupContainer = styled.section`
 
 function Carousel({
   ignoreFirstVideo,
-  category,
+  categoria,
+  isLoading
 }) {
-  const categoryTitle = category.titulo;
-  const categoryColor = category.cor;
-  const categoryExtraLink = category.link_extra;
-  const videos = category.videos;
+  if (isLoading) {
+    return <p>Loading videos...</p>;
+  }
+
+  if (!categoria || !categoria.videos) {
+    return null;
+  }
+
+  const videos = categoria.videos;
+
   return (
     <VideoCardGroupContainer>
-      {categoryTitle && (
+      {categoria.titulo && (
         <>
-          <Title style={{ backgroundColor: categoryColor || 'red' }}>
-            {categoryTitle}
+          <Title style={{ backgroundColor: categoria.cor || 'red' }}>
+            {categoria.titulo}
           </Title>
-          {categoryExtraLink && 
-            <ExtraLink href={categoryExtraLink.url} target="_blank">
-              {categoryExtraLink.text}  
-            </ExtraLink>
-          }
         </>
       )}
-      <Slider>
-        {videos.map((video, index) => {
-          if (ignoreFirstVideo && index === 0) {
-            return null;
-          }
 
-          return (
-            <SliderItem key={video.titulo}>
-              <VideoCard
-                videoTitle={video.titulo}
-                videoURL={video.url}
-                categoryColor={categoryColor}
-              />
-            </SliderItem>
-          );
-        })}
-      </Slider>
+        <VideoCardList>
+          {videos.map((video, index) => {
+            if (ignoreFirstVideo && index === 0) {
+              return null;
+            }
+
+            return (
+              <SliderItem key={video.titulo}>
+                <VideoCard
+                  videoTitle={video.titulo}
+                  videoURL={video.url}
+                  categoryColor={categoria.cor}
+                />
+              </SliderItem>
+            );
+          })}
+        </VideoCardList>
+
     </VideoCardGroupContainer>
   );
 }

@@ -3,8 +3,9 @@ import Iframe from './Iframe';
 import styled from 'styled-components';
 
 export const ContentAreaContainer = styled.section`
-  margin-left: 5%;
-  margin-right: 5%;
+  width:1440px;
+  max-width: 100%;
+  margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
@@ -63,7 +64,6 @@ ContentAreaContainer.Title = styled.h2`
 
   @media (max-width: 800px) {
     font-size: 32px;
-    text-align: center;
   }
 `;
 
@@ -102,30 +102,6 @@ export const BannerMainContainer = styled.section`
   }
 `;
 
-export const WatchButton = styled.button`
-  font-family: 'Roboto', sans-serif;
-  box-sizing: border-box;
-  cursor: pointer;
-  padding: 16px 24px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  outline: none;
-  border-radius: 5px;
-  text-decoration: none;
-  display: inline-block;
-  border: 1px solid transparent;
-  color: var(--black);
-  background: var(--white);
-  border-color: var(--black);
-  transition: opacity .3s;
-  display: none;
-  margin: 0 auto;
-  @media (max-width: 800px) {
-    display: block;
-  }
-`;
-
 
 function getYouTubeId(youtubeURL) {
   return youtubeURL
@@ -160,9 +136,6 @@ export default function Banner({
           <Iframe
             youtubeID={youTubeID}
           />
-          <WatchButton>
-            Assistir
-          </WatchButton>
         </ContentAreaContainer.Item>
       </ContentAreaContainer>
     </BannerMainContainer>
