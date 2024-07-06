@@ -1,6 +1,7 @@
 import React from 'react';
 import Iframe from './Iframe';
 import styled from 'styled-components';
+import Categoria from 'components/Categoria';
 
 export const ContentAreaContainer = styled.section`
   width:1440px;
@@ -8,6 +9,7 @@ export const ContentAreaContainer = styled.section`
   margin: 0 auto;
   height: 100%;
   display: flex;
+  gap: 50px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -27,47 +29,28 @@ ContentAreaContainer.Item = styled.div`
   }
 `;
 
-ContentAreaContainer.Category = styled.h1`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 60px;
-  line-height: 70px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  display: inline-block; 
-  padding: 25px;
-  line-height: 1;
-  border-radius: 4px;
-
-  @media (max-width: 800px) {
-    display: none;
-    font-size: 18px;
-    padding: 10px;
-  }
-`;
 
 ContentAreaContainer.Description = styled.p`
+ font-size: 18px;
+ font-weight: 300;
   @media (max-width: 800px) {
-    display: none;
+    width: 100%;
   }
 `;
 
 ContentAreaContainer.Title = styled.h2`
   font-style: normal;
-  font-weight: 300;
-  font-size: 40px;
+  font-weight: 400;
+  font-size: 46px;
   line-height: 1;
-  margin-top: 0;
-  margin-bottom: 32px;
+  margin: 0;
 
   @media (max-width: 800px) {
     font-size: 32px;
   }
 `;
 
-export const BannerMainContainer = styled.section`
+export const BannerEstilizado = styled.section`
   height: 80vh;
   position: relative;
   color: #fff;
@@ -115,14 +98,18 @@ export default function Banner({
   videoTitle,
   videoDescription,
   url,
+  categoria
 }) {
   const youTubeID = getYouTubeId(url);
   const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
-    <BannerMainContainer backgroundImage={bgUrl}>
+    <BannerEstilizado backgroundImage={bgUrl}>
       <ContentAreaContainer>
         <ContentAreaContainer.Item>
+        <Categoria categoriaCor={categoria.cor} tamanho="grande">
+            {categoria.titulo}
+          </Categoria>
           <ContentAreaContainer.Title>
             {videoTitle}
           </ContentAreaContainer.Title>
@@ -138,6 +125,6 @@ export default function Banner({
           />
         </ContentAreaContainer.Item>
       </ContentAreaContainer>
-    </BannerMainContainer>
+    </BannerEstilizado >
   );
 }

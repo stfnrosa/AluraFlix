@@ -7,7 +7,7 @@ const HeaderEstilizado = styled.header`
     background: #262626;
     height: 125px;
     display: flex;
-    border-bottom: 4px solid var(--destaque);
+    box-shadow: 0px 5px 10px 0px rgba(34, 113, 209, 0.70);
     div {
         align-items: center;
         width:1440px;
