@@ -3,7 +3,14 @@ import VideoCard from './components/VideoCard';
 import Slider, { SliderItem } from './components/Slider';
 import styled from 'styled-components';
 
-export const Title = styled.h3`
+const VideoCardGroupContainer = styled.section`
+  width: 1440px;
+  margin: 0 auto;
+  color: white;
+  margin-bottom: 16px;
+`;
+
+const Title = styled.h3`
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -21,34 +28,8 @@ export const Title = styled.h3`
   }
 `;
 
-export const VideoCardList = styled.ul`
 
-  display: flex;
-  padding-left: 0;
-  padding-bottom: 32px;
-  list-style: none;
-  flex-direction: row;
-  
-  li {
-    margin-right: 16px;
-  }
-`;
-
-export const VideoCardGroupContainer = styled.section`
-  width:1440px;
-  max-width: 100%;
-  margin: 0 auto;
-  color: white;
-  min-height: 197px;
-  margin-left: 5%;
-  margin-bottom: 16px;
-`;
-
-function Carousel({
-  ignoreFirstVideo,
-  categoria,
-  isLoading
-}) {
+function Carousel({ ignoreFirstVideo, categoria, isLoading }) {
   if (isLoading) {
     return <p>Loading videos...</p>;
   }
@@ -69,24 +50,23 @@ function Carousel({
         </>
       )}
 
-        <VideoCardList>
-          {videos.map((video, index) => {
-            if (ignoreFirstVideo && index === 0) {
-              return null;
-            }
+      <Slider>
+        {videos.map((video, index) => {
+          if (ignoreFirstVideo && index === 0) {
+            return null;
+          }
 
-            return (
-              <SliderItem key={video.titulo}>
-                <VideoCard
-                  videoTitle={video.titulo}
-                  videoURL={video.url}
-                  categoryColor={categoria.cor}
-                />
-              </SliderItem>
-            );
-          })}
-        </VideoCardList>
-
+          return (
+            <SliderItem key={video.titulo}>
+              <VideoCard
+                videoTitle={video.titulo}
+                videoURL={video.url}
+                categoryColor={categoria.cor}
+              />
+            </SliderItem>
+          );
+        })}
+      </Slider>
     </VideoCardGroupContainer>
   );
 }

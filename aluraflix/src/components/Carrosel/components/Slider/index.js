@@ -1,8 +1,10 @@
 import React from 'react';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
-const Container = styled.ul`
+const Container = styled.div`
   padding: 0;
   margin: 0;
   .slick-prev,
@@ -16,42 +18,48 @@ const Container = styled.ul`
     transform: initial;
     &:before {
       font-size: 30px;
+      color: var(--branco); // Ajuste para visualizar melhor os botões
     }
   }
-  
   .slick-prev {
     left: 0;
   }
   .slick-next {
-    right: 16px;
+    right: 0;
+  }
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
-export const SliderItem = styled.li`
-  margin-right: 16px;
+export const SliderItem = styled.div`
+  width: 33,33%; 
+  padding: 16px; 
+  box-sizing: border-box;
+
   img {
-    margin: 16px;
-    width: 298px;
-    height: 197px;
+    width: 100%;
+    height: auto;
     object-fit: cover;
   }
 `;
 
-
 const Slider = ({ children }) => (
   <Container>
-    <SlickSlider {...{
-      dots: false,
-      infinite: false,
-      speed: 300,
-      centerMode: false,
-      variableWidth: true,
-      adaptiveHeight: true,
-    }}
+    <SlickSlider
+      dots={false}
+      infinite={true}
+      speed={300}
+      slidesToShow={3} 
+      slidesToScroll={1}
+      variableWidth={true}
     >
       {children}
     </SlickSlider>
   </Container>
 );
 
-export default Slider; 
+export default Slider;
+
